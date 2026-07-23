@@ -38,7 +38,7 @@ export const config = createTamagui({
   themes: {
     light: {
       bg: "#ffffff",
-      shape: "#d2d0d0",
+      shape: "#e1e1e1",
       grey: "#555",
       textColor: "#000",
       red: "#e63945",

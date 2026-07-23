@@ -1,9 +1,9 @@
 import { TopAnimeItem } from "@/types/top";
 import { FontAwesomeFreeSolid } from "@react-native-vector-icons/fontawesome-free-solid";
 import React, { useState } from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { WebView } from "react-native-webview";
-import { useTheme } from "tamagui";
+import { Text, useTheme } from "tamagui";
 import {
   AnimeBanner,
   AnimeBannerContainer,
@@ -39,22 +39,21 @@ const AnimeDetails: React.FC<IAnimeDetailsProps> = ({ anime }) => {
           {anime.title_english || anime.title}
         </AnimeTitle>
         <AnimeInfosWrapper>
-          <AnimeInfos>{`${anime.year}  |  ${anime.genres.map((a) => a.name).join(", ")}  |  `}</AnimeInfos>
-          <AnimeInfos>
-            <FontAwesomeFreeSolid name="star" size={12} color={"#ffd000"} />
-            {"  "}
-            {anime.score}
-          </AnimeInfos>
+          <AnimeInfos>{`${anime.year}  |  ${anime.genres.map((a) => a.name).join(", ")}`}</AnimeInfos>
         </AnimeInfosWrapper>
+        <AnimeInfos style={{ marginTop: 5 }}>
+          <FontAwesomeFreeSolid name="star" size={12} color={"#ffd000"} />
+          {anime.score}
+        </AnimeInfos>
         {!canExpand ? (
           <Text
             onTextLayout={handleTextLayout}
+            color={"$textColor"}
             style={{
               position: "absolute",
               opacity: 0,
               left: -10000,
               top: -10000,
-              color: "#fff",
               lineHeight: 20,
             }}
           >
@@ -64,8 +63,10 @@ const AnimeDetails: React.FC<IAnimeDetailsProps> = ({ anime }) => {
         <AnimeSynopsisContainer>
           <Text
             numberOfLines={isExpanded ? undefined : 3}
+            color={"$textColor"}
+            fontFamily="$body"
+            fontWeight={"$2"}
             style={{
-              color: "#fff",
               lineHeight: 20,
             }}
           >

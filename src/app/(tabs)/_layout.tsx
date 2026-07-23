@@ -9,6 +9,7 @@ import { Feather } from "@react-native-vector-icons/feather";
 import { SplashScreen, Tabs } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
+import { useTheme } from "tamagui";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -17,6 +18,8 @@ export default function TabLayout() {
     "theme",
     useColorScheme(),
   );
+
+  const { bg, shape, textColor } = useTheme();
 
   const [loaded, error] = useFonts({
     Fredoka_300Light,
@@ -38,7 +41,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: "#e63945",
-        tabBarInactiveTintColor: "#fff",
+        tabBarInactiveTintColor: textColor.val,
         headerStyle: {
           backgroundColor: theme === "light" ? "#fff" : "#0a121d",
         },
@@ -47,7 +50,7 @@ export default function TabLayout() {
           fontFamily: "Fredoka_400Regular",
         },
         tabBarStyle: {
-          backgroundColor: "#0a121d",
+          backgroundColor: shape.val,
         },
         headerBackButtonDisplayMode: "minimal",
         tabBarShowLabel: false,
