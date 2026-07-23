@@ -27,6 +27,7 @@
     "expo-system-ui": "~57.0.0",
     "expo-updates": "~57.0.8",
     "expo-web-browser": "~57.0.0",
+    "fast-mlkit-translate-text": "^1.0.3",
     "lottie-react-native": "^7.3.8",
     "react": "19.2.3",
     "react-dom": "19.2.3",
