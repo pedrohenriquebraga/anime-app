@@ -1,7 +1,6 @@
-import { useTranslateText } from "@/hooks/useTranslateText";
 import { TopAnimeItem } from "@/types/top";
 import { FontAwesomeFreeSolid } from "@react-native-vector-icons/fontawesome-free-solid";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { WebView } from "react-native-webview";
 import { Text, useTheme } from "tamagui";
@@ -24,18 +23,12 @@ interface IAnimeDetailsProps {
 const AnimeDetails: React.FC<IAnimeDetailsProps> = ({ anime }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [canExpand, setCanExpand] = useState(false);
+
   const { bg } = useTheme();
-  const { translateText } = useTranslateText();
 
   const handleTextLayout = (event: any) => {
     setCanExpand(event.nativeEvent.lines.length > 3);
   };
-
-  useEffect(() => {
-    (async () => {
-      console.log(await translateText(anime.title_english));
-    })();
-  }, []);
 
   return (
     <AnimeDetailsContainer>
